@@ -5,6 +5,8 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import "./sign-up-form.styles.scss";
+import Button from "../button/button.component";
+
 const defaulFormFields = {
   displayName: "",
   email: "",
@@ -14,6 +16,7 @@ const defaulFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaulFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+
   const resetFormFields = () => {
     setFormFields(defaulFormFields);
   };
@@ -29,10 +32,11 @@ const SignUpForm = () => {
         email,
         password
       );
+      // setCurrentUser(user);
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
-      if (error.code == "auth/email-already-in-use") {
+      if (error.code === "auth/email-already-in-use") {
         alert("cannot create user, email already in use");
       } else {
         console.log("user creation encountered an error", error);
@@ -84,7 +88,7 @@ const SignUpForm = () => {
           value={confirmPassword}
           onChange={handleChange}
         />
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
