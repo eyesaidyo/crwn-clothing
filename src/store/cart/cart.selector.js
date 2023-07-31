@@ -1,0 +1,1 @@
+const selectCartReducer = state => state.cart
