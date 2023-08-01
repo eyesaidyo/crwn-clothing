@@ -5,7 +5,7 @@ import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./components/checkout/checkout.component";
 import { useEffect, } from "react";
-import { setCurrentUser } from "./store/user/user.action";
+import { setCurrentUserAction } from "./store/user/user.action";
 import { useDispatch } from "react-redux/es/exports";
 import {
   onAuthStateChangedListener,
@@ -18,7 +18,7 @@ function App() {
       if (user) {
         createUserDocumentFromAuth(user);
       }
-      dispatch(setCurrentUser(user));
+      dispatch(setCurrentUserAction(user));
     });
     return unsubscribe;
   }, [dispatch]);
