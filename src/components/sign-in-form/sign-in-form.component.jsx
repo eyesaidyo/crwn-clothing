@@ -7,17 +7,18 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import "./sign-in-form.styles.jsx";
 import { ButtonsContainer, SignInContainer } from "./sign-in-form.styles.jsx";
-import { useContext } from "react";
-import { UserContext } from "../../contexts/user.context";
 
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { setCurrentUserAction } from "../../store/user/user.action";
 const defaultFormFields = {
   email: "",
   password: "",
 };
 const SignInForm = () => {
+  const dispatch = useDispatch()
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  const { setCurrentUser } = useContext(UserContext)
+  const setCurrentUser = dispatch(setCurrentUserAction)
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
