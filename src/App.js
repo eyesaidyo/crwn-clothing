@@ -13,7 +13,7 @@ function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(checkUserSession())
-  }, []);
+  },);
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
