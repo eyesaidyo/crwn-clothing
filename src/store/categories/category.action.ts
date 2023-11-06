@@ -11,5 +11,5 @@ export const fetchCategoriesStart = withMatcher((): FetchCategoriesStart => crea
 
 export const fetchCategoriesSucccess = withMatcher((categoriesArray:Category[]): FetchCategoriesSuccess => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, categoriesArray));
 
-export const fetchCategoriesFailed = withMatcher((error:Error) => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error));
+export const fetchCategoriesFailed = withMatcher((error:Error):FetchCategoriesFailed => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error));
 
